@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.fileupload-ui.css
+ *= require bootstrap_and_overrides.css.less
+ */
+
+ .js_delete{
+ 	display: inline-block;
+ 	margin-left: 11px;
+ }
+.field_with_errors{
+	display: inline;
+}
+
+.dropzone{
+	width: 540px;
+	height: 200px;
+	border: 2px dashed;
+	border-radius: 3px;
+	margin: 30px;
+}
+
+.drop_caption{
+	height:50px;
+	width:50%;
+	margin: 0 auto;
+	position: relative;
+	top: 75px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.thumbnail{
+	float: left;
+}
+
+.boxclose{
+    width:26px;
+    height:26px;
+    top left;
+    width:8px;
+    height: 8px;
+    margin-top:-10px;
+    margin-right:-30px;
+    cursor:pointer;
+    color: white;
+    border-radius: 40px;
+}
+
+.boxclose div{
+	margin-left: 30px;
+}
+.thumbnail{
+	margin-left: 15px;
+}
+
+.controls{
+	margin-bottom: 30px;
+}

@@ -1,0 +1,13 @@
+div
+  h2 #{@user.displayed_name} 
+
+div  
+  strong Places
+  - for p in @user.places do
+	br
+    = link_to p.name, place_path(p)
+  	
+strong Pictures:
+div
+	= render partial: "shared/gallery", collection: @user.pictures, as: :picture
+  

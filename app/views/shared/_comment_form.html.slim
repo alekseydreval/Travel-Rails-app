@@ -1,0 +1,8 @@
+- if current_user
+  a.new_reply href="#" style="display:block;" New Reply
+= form_for [commentable, Comment.new], :html => { class: "form-horizontal", style: "display:none;" } do |f|
+	= f.text_area :text, rows: "3", style: "width: 80%; margin-top: 30px; margin-bottom: 10px;"
+	= f.button "Send", :type => "submit", :class => 'btn btn-primary', :value => "Send", style: "display:block;"
+	= f.hidden_field :commentable_id, :value => commentable.id
+	= f.hidden_field :commentable_type, :value => commentable.class.to_s
+	= f.hidden_field :parent_id,  :value => parent_id

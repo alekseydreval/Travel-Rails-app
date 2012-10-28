@@ -1,0 +1,35 @@
+= form_for @place, :html => { :class => "form-horizontal fileupload", :multipart => true } do |f|
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field required'
+    = f.label :description, :class => 'control-label '
+    .controls
+      = f.text_area :description, :class => 'text_area required'
+    = link_to_add_fields "Add Extlink", f, :ex_links
+    / - if params[:action] == 'edit'
+      / a id="restore_fields" style="display: none;" Restore
+  .form-actions
+    span class="btn btn-success fileinput-button" style="display:none;"
+      = f.file_field :picture
+    = f.submit nil, :class => 'btn btn-primary', :value => "Done"
+    '
+  .control-group
+    .dropzone
+      .drop_caption Drop your photos here
+      .progress.progress-success.active style="margin-top: 155px;"
+         .bar style="width: 0;" id="pic_bar"
+
+    ul.thumbnails
+      li.span8
+        - @place.pictures.each do |picture|
+          = render partial: "shared/gallery", locals: { picture: picture }
+          
+#pic_template style="display:none;"
+  div style="float:left;"
+    a.boxclose href="#" onclick="remove_pic(this, {{ id }} )"
+      div style="float:right" X
+    a.thumbnail href=" {{ full_url }} "
+      img src="{{ prev_url }}"
+
+

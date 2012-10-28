@@ -1,0 +1,5 @@
+= image_tag @pic
+div 
+  = render partial: "shared/comment", :collection => get_commentable.comments.reject(&:parent_id)
+  = render partial: "shared/comment_form", locals: { commentable: get_commentable, parent_id: nil  }
+

@@ -1,0 +1,22 @@
+= form_for @user do |f|
+  = f.label :name, :class => 'control-label' 
+  .controls
+    = f.text_field :name, :class => 'text_field required'
+  = f.label :email, :class => 'control-label '
+  .controls
+    = f.text_field :email, :class => 'text_field required'
+  = f.label :password, :class => 'control-label '
+  .controls
+    = f.text_field :password, :class => 'text_field required'
+  = f.label :password_confirmation, :class => 'control-label '
+  .controls
+    = f.text_field :password_confirmation, :class => 'text_field required'
+  = f.submit nil, :class => 'btn btn-primary', :value => "Register"
+
+
+
+
+
+
+
+
