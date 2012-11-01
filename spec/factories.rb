@@ -16,17 +16,20 @@ FactoryGirl.define do
     factory :user_with_pictures do
       after(:create){|u| FactoryGirl.create(:picture, user: u)}
     end
-      
-
 
     factory :user_with_places do
     	after(:create) do |user|
     		FactoryGirl.create_list(:place, 5, user: user)
     		FactoryGirl.create_list(:picture, 5, user: user)
     		FactoryGirl.create_list(:comment, 5, user: user)
+        FactoryGirl.create(:message, to_user: user)
     	end
     end
+  end
 
+  factory :message do
+    association :from_user, factory: :user
+    association :to_user, factory: :user
   end
 
   factory :place do

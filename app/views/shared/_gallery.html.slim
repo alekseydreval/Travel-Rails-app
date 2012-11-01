@@ -3,5 +3,5 @@ div style="float:left;"
   - if params[:action] == 'edit'
     a.boxclose onclick="remove_pic(this, #{picture.id});"
       div style="float:right" X
-  a.thumbnail href=pictures_show_path(id: picture.id)
-    img src=picture.pic.url(:medium)
+  a.thumbnail.usual href=pictures_show_path(id: picture.id)
+    img  src=picture.pic.url(:medium)

@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
 
 
   before_filter lambda { 
-   session[:fake_place_id] ||= Place.create({name: "foo", description: "bar", temp: true}).id 
+   session[:fake_place_id] ||= Place.create({name: "foo", description: "barfghfghgjgfhjgj", temp: true}).id 
    @fake_place_id = session[:fake_place_id]; 
           Rails.logger.info(@fake_place_id)
  }, :only => :create
@@ -71,7 +71,7 @@ class PlacesController < ApplicationController
             Place.find(@fake_place_id).pictures.each { |pic| @place.pictures << pic }
             redirect_to action: "index", notice: 'Place was successfully created.'
           else
-            flash[:alert] = @place.errors.full_messages.to_sentence words_connector: "\n" 
+            flash.now[:alert] = @place.errors.full_messages.to_sentence words_connector: "\n" 
             render action: "new"
           end
         end

@@ -1,9 +1,9 @@
-div style="background-color: #667C65; margin-top: 15px; min-height: 60px; padding: 10px;"
+.well style="background-color: #667C65; margin-top: 15px; min-height: 60px; padding: 10px;"
   strong =link_to comment.user.displayed_name, user_path(comment.user) 
-  div = comment.text
   - if current_user == comment.user and comment.is_childless?
 	  a href="#" onclick="remove_comment(this, #{comment.id})"
 	    div style="float:right; margin-right:5px;" X
+  div = comment.text
   = render partial: "shared/comment_form", locals: { commentable: get_commentable, parent_id: comment.id  }
   div style="margin-left:30px;"
     - if comment.has_children?

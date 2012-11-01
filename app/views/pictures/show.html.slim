@@ -1,3 +1,4 @@
+= button_to "Back to #{@picture.place.name}", place_path(@picture.place), method: :get, class: :btn
 = image_tag @pic
 div 
   = render partial: "shared/comment", :collection => get_commentable.comments.reject(&:parent_id)

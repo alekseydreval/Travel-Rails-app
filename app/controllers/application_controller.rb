@@ -26,4 +26,5 @@ class ApplicationController < ActionController::Base
   	request.env["HTTP_REFERER"] || "/"
   end
 
+
 end

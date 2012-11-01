@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
 
 before_filter :redirect_to_login,  only: ['edit', 'update', 'destroy']
-before_filter(only: ['edit', 'update', 'destroy']) {|c| c.check_user_identity(Picture)}  
+before_filter(only: ['edit', 'update']) {|c| c.check_user_identity(Picture)}  
 
   def create
   	Place.find(params[:id]).pictures.create(params[:picture])
@@ -12,7 +12,7 @@ before_filter(only: ['edit', 'update', 'destroy']) {|c| c.check_user_identity(Pi
 
     respond_to do |format|
       format.json do
-          @picture = Picture.find(params[:id])
+          Picture.find(params[:id]).destroy
           render :json => { sdf: 'ok' }
 	    end
     end

@@ -6,7 +6,7 @@
     = f.label :description, :class => 'control-label '
     .controls
       = f.text_area :description, :class => 'text_area required'
-    = link_to_add_fields "Add Extlink", f, :ex_links
+    / # = link_to_add_fields "Add Extlink", f, :ex_links
     / - if params[:action] == 'edit'
       / a id="restore_fields" style="display: none;" Restore
   .form-actions
@@ -14,6 +14,8 @@
       = f.file_field :picture
     = f.submit nil, :class => 'btn btn-primary', :value => "Done"
     '
+
+  h2 Photos
   .control-group
     .dropzone
       .drop_caption Drop your photos here
@@ -29,7 +31,7 @@
   div style="float:left;"
     a.boxclose href="#" onclick="remove_pic(this, {{ id }} )"
       div style="float:right" X
-    a.thumbnail href=" {{ full_url }} "
+    a.thumbnail.added_pic href="{{ full_url }}" onclick="window.open(this.href);return false;"
       img src="{{ prev_url }}"
 
 

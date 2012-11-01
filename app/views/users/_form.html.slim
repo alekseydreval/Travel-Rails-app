@@ -1,22 +1,18 @@
-= form_for @user do |f|
+= form_for @user, html: { class: "user_form" } do |f|
+  div style="display:none;"  
+    = f.file_field :avatar, onchange: "readURL(this);", html: {id: :user_file_avatar}
+  h4 Select Your avatar:
+  img id="avatar" style="width:150px; height:150px; margin: 15px 0" 
   = f.label :name, :class => 'control-label' 
   .controls
     = f.text_field :name, :class => 'text_field required'
   = f.label :email, :class => 'control-label '
   .controls
-    = f.text_field :email, :class => 'text_field required'
+    = f.text_field :email, :class => 'text_field required email'
   = f.label :password, :class => 'control-label '
   .controls
-    = f.text_field :password, :class => 'text_field required'
-  = f.label :password_confirmation, :class => 'control-label '
+    = f.password_field :password, :class => 'text_field required', minlength: "6", id: "password"
+  = f.label :password_confirmation, :class => 'control-label' 
   .controls
-    = f.text_field :password_confirmation, :class => 'text_field required'
+    = f.password_field :password_confirmation, :class => 'text_field required', minlength: "6", equalTo: "#password"
   = f.submit nil, :class => 'btn btn-primary', :value => "Register"
-
-
-
-
-
-
-
-
