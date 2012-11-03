@@ -6,9 +6,9 @@
     = f.label :description, :class => 'control-label '
     .controls
       = f.text_area :description, :class => 'text_area required'
-    / # = link_to_add_fields "Add Extlink", f, :ex_links
-    / - if params[:action] == 'edit'
-      / a id="restore_fields" style="display: none;" Restore
+    = link_to_add_fields "Add Extlink", f, :ex_links
+    - if params[:action] == 'edit'
+      a id="restore_fields" style="display: none;" Restore
   .form-actions
     span class="btn btn-success fileinput-button" style="display:none;"
       = f.file_field :picture

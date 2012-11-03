@@ -3,7 +3,7 @@ div class="page-header"
   h1=t '.title', :default => model_class.model_name.human.pluralize
   - @places.each do |place|
     h2= link_to place.name, place_path(place)
-    div.well style="min-height:200px;"
+    div.well style="min-height:225px;"
       - unless place.pictures.blank?
         a href=picture_path(place.pictures.first)
           img style="display:block; float:left;margin:10px; margin-top:5px;"src=place.pictures[Random.rand(place.pictures.length)].pic(:medium)

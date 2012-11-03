@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   attr_accessible :email, :avatar, :password, :password_confirmation, :name
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "150x150" }
+  has_attached_file :avatar,
+                    :styles => { :medium => "300x300>", :small => "125x125" },
+                     storage: :dropbox,
+                     dropbox_credentials: "#{Rails.root}/config/dropbox.yml",
+                     dropbox_options: { unique_filename: true }
 
   validates_uniqueness_of :email
   validates :name, :email, :password, :password_confirmation, :presence => true

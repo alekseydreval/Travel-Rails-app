@@ -15,7 +15,5 @@
 //= require twitter/bootstrap
 //= require jquery.remotipart
 //= require jquery-fileupload
-//= require jquery.validate
-//= require underscore
-//= require last
+//= require_tree ./utils
 //= require_tree .

@@ -1,8 +1,8 @@
 = form_for @user, html: { class: "user_form" } do |f|
   div style="display:none;"  
-    = f.file_field :avatar, onchange: "readURL(this);", html: {id: :user_file_avatar}
+    = f.file_field :avatar, id: :user_file_avatar
   h4 Select Your avatar:
-  img id="avatar" style="width:150px; height:150px; margin: 15px 0" 
+  img id="avatar" style="width:125px; height:125px; margin: 15px 0" src="/images/default_avatar.jpg" 
   = f.label :name, :class => 'control-label' 
   .controls
     = f.text_field :name, :class => 'text_field required'

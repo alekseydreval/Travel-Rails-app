@@ -3,7 +3,12 @@ class Picture < ActiveRecord::Base
   belongs_to :place
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy 
-  has_attached_file :pic, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :pic,
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                     storage: :dropbox,
+                     dropbox_credentials: "#{Rails.root}/config/dropbox.yml",
+                     dropbox_options: {unique_filename: true}
+
 
   def to_json
   	{ pic: { prev: self.pic.url(:medium),
