@@ -1,0 +1,10 @@
+h2= link_to place.name, place_path(place)
+div.well style="min-height:225px;"
+  - unless place.pictures.blank?
+    a href=picture_path(place.pictures.first)
+      img style="display:block; float:left;margin:10px; margin-top:5px;" src=place.pictures[Random.rand(place.pictures.length)].pic(:medium)
+  span style="padding:10px;" =place.description.length < 10 ? "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." : place.description
+  div style="width: 100%; margin-top: 10px;"
+    - if current_user == place.user
+      = link_to "Edit", edit_place_path(place), :class => 'btn btn-mini'
+      = link_to "Destroy", place_path(place), :method => :delete, :data => { :confirm => "Are you sure?" }, :class => 'btn btn-mini btn-danger'

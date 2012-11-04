@@ -1,5 +1,3 @@
-source 'https://rubygems.org'
-
 gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
@@ -39,6 +37,7 @@ gem "thin"
 
 gem 'rspec-rails'
 gem "factory_girl", "~> 4.0"
+
 gem 'capybara'
 # gem 'webrat'
 gem "database_cleaner"

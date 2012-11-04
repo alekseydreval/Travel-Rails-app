@@ -15,7 +15,11 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.where(temp: false)
+    if params[:user]
+      @places = User.find(params[:user]).places.where(temp: false)
+    else
+      @places = Place.where(temp: false)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

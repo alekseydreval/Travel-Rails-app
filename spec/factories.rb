@@ -11,7 +11,6 @@ FactoryGirl.define do
     name "Konata"
     password '123456'
     password_confirmation '123456'
-    # picture
     
     factory :user_with_pictures do
       after(:create){|u| FactoryGirl.create(:picture, user: u)}
@@ -34,7 +33,7 @@ FactoryGirl.define do
 
   factory :place do
   	name "Lorem ipsum"
-  	description "abc"
+  	description "abcabcbacba"
   	user
     after(:create){|p| FactoryGirl.create(:picture, place: p)}
   end
