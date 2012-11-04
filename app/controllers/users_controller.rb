@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
 
     if !params[:user][:avatar]
-      params[:user][:avatar] =  ActionDispatch::Http::UploadedFile.new(tempfile: File.new(Rails.root.join('public', 'images', 'default_avatar.jpg')), filename: "default_avatar.jpg")
+      params[:user][:avatar] =  ActionDispatch::Http::UploadedFile.new(tempfile: File.new(Rails.root.join('public', 'images', 'default_avatar.jpg')), filename: "default_avatar#{Random.rand(1000)}.jpg")
     end
 
     @user = User.new(params[:user])
