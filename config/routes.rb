@@ -10,6 +10,12 @@ Travel::Application.routes.draw do
 
   resources :users, only: ["create", "show"]
 
+  resources :messages, only: ["new", "create", "destroy"]
+  resources :chatboxes, only: ["show", "destrroy"]
+  match "/conversations/:user_id" => "chatboxes#index", as: :conversations
+
+
+
   resources :places, :shallow => true do
     resources :comments
   end

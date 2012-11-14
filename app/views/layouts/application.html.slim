@@ -36,7 +36,7 @@ html lang="en"
       .content
         .row
           = bootstrap_flash
-          .span9
+          .span9 style="max-width:700px;"
             = yield
           .span3
             .well.sidebar-nav style="width:125px; margin-top:145px"
@@ -53,6 +53,8 @@ html lang="en"
                 ul.nav.nav-list
                   li.nav-header 
                   li= link_to "My places", places_path(user:current_user.id)
+                  - if current_user.income_messages.present?
+                    li= link_to "Inbox", conversations_path(current_user.id)
     
       footer
         / p &copy; Company 2012

@@ -1,0 +1,17 @@
+table class="table table-hover" id="conversations"
+  caption 
+    h3 Conversations
+  tbody
+    - for c in @chats
+      - other_messages = c.foreign_messages(current_user)
+      - if other_messages
+          tr
+            td 
+               a href=user_path(other_messages.last.user) 
+                 div style="width:65px;"
+                   = image_tag other_messages.last.user.get_avatar
+                   b style="display:block;text-align:center; margin:3px 0;"
+                   = other_messages.last.user.displayed_name
+            td
+              a href=chatbox_path(c) 
+                = c.foreign_messages(current_user).last.text  || "span LoremLorem ipsum anim ut adipisicing do eiusmod id non in aliquip ea consectetur incididunt sint cupidatat."

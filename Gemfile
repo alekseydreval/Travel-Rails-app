@@ -35,6 +35,7 @@ gem "jquery-fileupload-rails"
 gem "paperclip", "~> 3.0"
 gem "quiet_assets"
 gem "thin"
+gem 'simple_form'
 
 gem 'rspec-rails'
 gem "factory_girl", "~> 4.0"

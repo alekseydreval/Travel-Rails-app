@@ -1,0 +1,18 @@
+table class="table  table-striped"  style="float: left"
+  tbody
+  - for m in @messages
+    tr
+      td style="vertical-align:middle; padding:0px;"
+         a href=user_path(m.user) style="margin:5px;"
+           div style="width:35px;"
+            = image_tag m.user.get_avatar
+            b style="display:block;text-align:center;"
+               = m.user.displayed_name
+      td
+        span = m.text || "LoremLorem ipsum anim ut adipisicing do eiusmod id non in aliquip ea consectetur incididunt sint cupidatat."
+
+= simple_form_for(Message.new, :html => {:class => 'form-horizontal' }) do |f|
+  = f.input :text, label: false, as: :text, input_html: {rows: "3", style: "min-width: 525px; overflow:hidden", class: "autogrow"}
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :chatbox_id, value: m.chatbox.id
+  = f.button :submit, value: "Send"

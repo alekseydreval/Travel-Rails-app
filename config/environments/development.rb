@@ -36,4 +36,6 @@ Travel::Application.configure do
   config.assets.debug = true
   config.serve_static_assets = true
   # ...or, change some options...
+  Paperclip.options[:command_path] = "/usr/bin/identify"
+ 
 end

@@ -13,7 +13,6 @@ end
 module Travel
   class Application < Rails::Application
     config.assets.initialize_on_precompile = false
-    config.assets.precompile += [/^[a-zA-Z]*\..*/]
 
 
     # Settings in config/environments/* take precedence over those specified here.

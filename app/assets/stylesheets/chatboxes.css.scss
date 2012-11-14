@@ -1,0 +1,21 @@
+// Place all the styles related to the Chatboxes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#conversations tbody tr td {height: 90px;}
+
+tr td a {
+  display:block;
+  color:rgb(1, 52, 53);
+  height:100%;
+}
+
+tr td a:hover {
+  color:rgb(1, 52, 53);
+}
+
+a div b {
+  display:block;
+  text-align:center;
+  margin:3px 0;
+}
