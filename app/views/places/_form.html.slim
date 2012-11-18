@@ -2,16 +2,21 @@
   .control-group
     = f.label :name, :class => 'control-label'
     .controls
-      = f.text_field :name, :class => 'text_field required'
+      = f.text_field :name, :class => 'text_field required', :style=>"display:block;clear:both;width:90%;"
     = f.label :description, :class => 'control-label '
     .controls
-      = f.text_area :description, :class => 'text_area required'
-    = link_to_add_fields "Add Extlink", f, :ex_links
-    - if params[:action] == 'edit'
-      a id="restore_fields" style="display: none;" Restore
+      = f.text_area :description, :class => 'text_area required', :style=>"display:block;clear:both;width:90%;"
+      / div style="display:none;"
+      = f.text_field :coords, :id => 'coords_data', :class => 'required', :style => "visibility:hidden;"
+    / = link_to_add_fields "Add Extlink", f, :ex_links
+    / - if params[:action] == 'edit'
+    /   a id="restore_fields" style="display: none;" Restore
   .form-actions
     span class="btn btn-success fileinput-button" style="display:none;"
       = f.file_field :picture
+      p 
+    strong Set Location:
+    .well#map_canvas style="width: 95%; height:300px;" coords=@place.try(:coords)
     = f.submit nil, :class => 'btn btn-primary', :value => "Done"
     '
 
@@ -19,8 +24,8 @@
   .control-group
     .dropzone
       .drop_caption Drop your photos here
-      .progress.progress-success.active style="margin-top: 155px;"
-         .bar style="width: 0;" id="pic_bar"
+      .progress.progress.progress-striped.active#pict_bar style="margin-top: 155px;display:none;"
+         .bar.bar-success style="width: 100%;"
 
     ul.thumbnails
       li.span8
@@ -29,9 +34,11 @@
           
 #pic_template style="display:none;"
   div style="float:left;"
-    a.boxclose href="#" onclick="remove_pic(this, {{ id }} )"
+    a.boxclose.pic_delete_link pic_id="{{ id }}"
       div style="float:right" X
     a.thumbnail.added_pic href="{{ full_url }}" onclick="window.open(this.href);return false;"
       img src="{{ prev_url }}"
+      img src='/images/ajax-loader.gif' style="display: none;"class="load_bar"
+
 
 

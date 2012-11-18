@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111114939) do
+ActiveRecord::Schema.define(:version => 20121117115049) do
 
   create_table "chatboxes", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20121111114939) do
     t.datetime "updated_at",  :null => false
     t.boolean  "temp"
     t.integer  "user_id"
+    t.string   "coords"
   end
 
   create_table "users", :force => true do |t|

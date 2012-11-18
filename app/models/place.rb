@@ -1,5 +1,5 @@
 class Place < ActiveRecord::Base
-  attr_accessible :description, :name, :ex_links_attributes, :temp, :user_id
+  attr_accessible :description, :coords, :name, :ex_links_attributes, :temp, :user_id
   has_many :ex_links
   has_many :pictures, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy

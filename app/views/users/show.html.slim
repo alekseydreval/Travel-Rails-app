@@ -1,7 +1,16 @@
  
 div
   h2 #{@user.displayed_name}
-  =image_tag @user.get_avatar
+  div style="width:125px; height:125px"
+	  =image_tag @user.get_avatar
+  - if current_user && current_user != @user
+	  a href="#" id="new_message" 
+	    h4  style="display:inline;color: rgb(235, 217, 11)" Write a message
+	  = simple_form_for(Message.new, :html => {:class => 'form-horizontal', :id => 'new_message_form', :style => "display:none;" }) do |f|
+		  = f.input :text, label: false, as: :text, input_html: {rows: "3", style: "min-width: 525px; overflow:hidden; min-height: 50px;", class: "autogrow"}
+		  = f.hidden_field :user_id, value: current_user.id
+		  = f.hidden_field :to_user_id, value: @user.id
+		  = f.button :submit, value: "Send", style: "margin-top: -70px;"
 
 div  
   strong Places
@@ -16,12 +25,7 @@ div
 	        - if current_user == place.user
 	          = link_to "Edit", edit_place_path(place), :class => 'btn btn-mini'
 	          = link_to "Destroy", place_path(place), :method => :delete, :data => { :confirm => "Are you sure?" }, :class => 'btn btn-mini btn-danger'
-  - if current_user && current_user != @user
-	  = simple_form_for(Message.new, :html => {:class => 'form-horizontal' }) do |f|
-		  = f.input :text, label: false, as: :text, input_html: {rows: "3", style: "min-width: 525px; overflow:hidden", class: "autogrow"}
-		  = f.hidden_field :user_id, value: current_user.id
-		  = f.hidden_field :to_user_id, value: @user.id
-		  = f.button :submit, value: "Send"
+  
 
   	
 / strong Pictures:

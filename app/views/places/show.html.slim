@@ -14,6 +14,9 @@ p
   ul.thumbnails
     li.span8
       = render partial: "shared/gallery", collection: @place.pictures, as: :picture
+p 
+  strong Location:
+  .well#map_canvas style="width: 95%; height:300px;" coords=@place.coords show="true"
 
 
 .form-actions

@@ -9,7 +9,7 @@ $(".fileupload").fileupload
   add: (e, data) ->
     if valid(data["files"][0])
       data.submit()
-      $("#pic_bar").css "width", "0%"
+      $("#pict_bar").show()
     else
       alert "Allowed types: jpg, png, gif, svg"
 
@@ -21,17 +21,21 @@ $(".fileupload").fileupload
         prev_url: file.prev
       )
       $("ul.thumbnails li").prepend $(template).fadeIn()
+      $("#pict_bar").hide()
+
 
 
   progressall: (e, data) ->
-    progress = parseInt(data.loaded / data.total * 100, 10)
+    progress = parseIn.t(data.loaded / data.total * 100, 10)
     $("#pic_bar").css "width", progress + "%"
 
 
 #Delete a picture    
-$(".pic_delete_link").click ->
+$('body').on('click', ".pic_delete_link", ->
   self = $(this)
   id = self.attr("pic_id")
+  load_bar = $(this).parent().find('.load_bar')
+  load_bar.show()
   $.ajax
     url: "/pictures/" + id
     type: "post"
@@ -41,9 +45,10 @@ $(".pic_delete_link").click ->
     statusCode:
       200: ->
         $(self).parent().fadeOut()
+        load_bar.hide()
 
       204: ->
-        console.log "can't delete"
+        console.log "can't delete")
 
 
 #Add nested fields(ExLinks)
@@ -66,3 +71,31 @@ ALLOWED_TYPES = ["image/gif",
 
 _.templateSettings = interpolate: /\{\{(.+?)\}\}/g
                
+
+
+###Google Maps###
+map_dom = document.getElementById("map_canvas")
+
+window.mapOptions = 
+          center: new google.maps.LatLng(59, 30)
+          zoom: 9
+          mapTypeId: google.maps.MapTypeId.TERRAIN
+        
+window.map = new google.maps.Map(map_dom,
+            mapOptions);
+
+m = new google.maps.Marker
+m.setMap(window.map)
+
+#show the marker
+if coords = map_dom.getAttribute('coords')
+  coords = coords.match /\d+(\.\d+)?/g
+  latlng = new google.maps.LatLng(coords[0], coords[1])
+  window.map.center = latlng
+  m.setPosition(latlng)
+
+# edit or create a marker
+if !map_dom.getAttribute('show')
+  google.maps.event.addListener(window.map, 'click', (coord) ->
+   m.setPosition(coord.latLng)
+   $('#coords_data').val(coord.latLng))

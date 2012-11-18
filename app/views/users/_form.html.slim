@@ -1,5 +1,5 @@
 = form_for @user, html: { class: "user_form" } do |f|
-  div  
+  div style="display:none;" 
     = f.file_field :avatar, id: :user_file_avatar
   h4 Select Your avatar:
   img id="avatar" style="width:125px; height:125px; margin: 15px 0" src="/images/default_avatar.jpg" 

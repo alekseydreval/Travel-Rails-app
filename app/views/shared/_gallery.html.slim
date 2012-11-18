@@ -1,7 +1,8 @@
 
-div style="float:left;"
+div style="float:left"
   - if params[:action] == 'edit'
     a.boxclose class="pic_delete_link" pic_id=picture.id
       div style="float:right" X
-  a.thumbnail.usual href=pictures_show_path(id: picture.id)
+  a.thumbnail.usual href=pictures_show_path(id: picture.id) 
     img  src=picture.pic.url(:medium)
+	=image_tag '/images/ajax-loader.gif', style: "display: none;", class: "load_bar"

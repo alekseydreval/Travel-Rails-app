@@ -6,10 +6,10 @@ table class="table table-hover" id="conversations"
       - other_messages = c.foreign_messages(current_user)
       - if other_messages
           tr
-            td 
+            td style="width:20%;"
                a href=user_path(other_messages.last.user) 
                  div style="width:65px;"
-                   = image_tag other_messages.last.user.get_avatar
+                   img src=other_messages.last.user.get_avatar
                    b style="display:block;text-align:center; margin:3px 0;"
                    = other_messages.last.user.displayed_name
             td

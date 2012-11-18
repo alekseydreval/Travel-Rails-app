@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :avatar, :password, :password_confirmation, :name
   has_attached_file :avatar,
                     :styles => { :medium => "300x300>", :small => "125x125" },
+                    :default_url => "/images/default_avatar_:style.jpg", 
+                    :default_style => :small,
                      storage: :dropbox,
                      dropbox_credentials: "#{Rails.root}/config/dropbox.yml",
                      dropbox_options: { unique_filename: true }
@@ -27,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def get_avatar
-    avatar(:small) rescue Rails.root.join('public', 'images', 'default_avatar.jpg')
+    avatar(:small) rescue nil 
   end
 
   # check if there is a messages between 2 users and create new chatbox if needed

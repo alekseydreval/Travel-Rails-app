@@ -17,6 +17,3 @@
 //= require jquery-fileupload
 //= require_tree ./utils
 //= require_tree .
-
-$('.autogrow').autogrow()
-
