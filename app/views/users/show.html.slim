@@ -25,6 +25,8 @@ div
 	        - if current_user == place.user
 	          = link_to "Edit", edit_place_path(place), :class => 'btn btn-mini'
 	          = link_to "Destroy", place_path(place), :method => :delete, :data => { :confirm => "Are you sure?" }, :class => 'btn btn-mini btn-danger'
+  - if current_user == @user
+    = link_to "New place", new_place_path, :class => 'btn btn-primary', style: "display:block; width:100px;"
   
 
   	

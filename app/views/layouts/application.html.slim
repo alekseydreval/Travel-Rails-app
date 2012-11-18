@@ -44,7 +44,7 @@ html lang="en"
               - unless current_user
                 = form_tag sessions_path,  class: "form-inline" do
                   = text_field_tag "email", nil, type: "text", placeholder: "Email", class: "input-small", style: "margin: 7px"
-                  = text_field_tag "password", nil, placeholder: "Password", class: "input-small",  style: "margin: 7px"
+                  = password_field_tag "password", nil, placeholder: "Password", class: "input-small",  style: "margin: 7px"
                   = submit_tag "Sign in", class: "btn", type: "submit", id: 'sign_in',  style: "margin: 7px; display:block;"
                 = link_to "Registration", registration_path
               - else

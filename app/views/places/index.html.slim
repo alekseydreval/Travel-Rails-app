@@ -1,7 +1,8 @@
 - model_class = Place
 div class="page-header"
-  h1 style="color: #E4E2CB;" =t '.title', :default => "Welcome to Travaler"
-  h5 style="margin-bottom:100px; color: #E4E2CB;" Please register if you want to be able to leave comments
+  h1 style="color: #E4E2CB;" Welcome to Travaler - 
+  h4 style="margin-bottom:100px; color: #E4E2CB;" a place where you can sahre your impressions about places you visited
+  small Please register if you want to be able to leave comments
   - @places.each do |place|
     h2= link_to place.name, place_path(place)
     div.well style="min-height:225px;"
